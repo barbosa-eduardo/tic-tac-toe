@@ -1,12 +1,13 @@
 class Board
-  attr_reader :board
+  attr_reader :board, :symbols
 
   def initialize
     @board = [
-      ['X', ' ', ' '],
-      [' ', 'X', ' '],
-      [' ', ' ', 'X']
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
     ]
+    @symbols = %w[X O]
   end
 
   def to_s
@@ -18,5 +19,12 @@ class Board
       end
     end
     board_string
+  end
+
+  def mark(symbol, row, column)
+    return false unless symbols.include?(symbol) && row.between?(0, 2) && column.between?(0, 2)
+
+    board[row][column] = symbol
+    true
   end
 end
