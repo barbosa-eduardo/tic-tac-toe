@@ -1,9 +1,11 @@
+# frozen_string_literal: false
+
+# Represents the board for Tic-Tac-Toe
 class Board
   attr_reader :winner
 
-  @winner = ''
-
   def initialize
+    @winner = ''
     @board = [
       [' ', ' ', ' '],
       [' ', ' ', ' '],
@@ -11,6 +13,7 @@ class Board
     ]
   end
 
+  # Return the game board formatted as a String
   def to_s
     board_string = '  A B C' # Print column coordinates
     board.each_with_index do |row, index|
@@ -22,6 +25,7 @@ class Board
     board_string
   end
 
+  # Mark a symbol in a empty space on the board
   def mark(symbol, row, column)
     return false unless free_spot?(row, column)
 
@@ -36,6 +40,7 @@ class Board
   attr_reader :board, :symbols
   attr_writer :winner
 
+  # Check if a spot on the board is empty
   def free_spot?(row, column)
     # The spot is free if it exist and is empty
     return false unless row.between?(0, 2) && column.between?(0, 2) && board[row][column] == ' '
@@ -43,6 +48,7 @@ class Board
     true
   end
 
+  # Check if there is a winner for the game
   def check_winner
     # The game is won when a row, column or diagonal is filled with the same symbol
     board.each_with_index do |row, index|
