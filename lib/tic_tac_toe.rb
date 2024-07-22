@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 require_relative 'tic_tac_toe/board'
-require_relative 'tic_tac_toe/nought'
-require_relative 'tic_tac_toe/cross'
+require_relative 'tic_tac_toe/player'
 
 class TicTacToe
   def initialize
     @board = Board.new
-    @nought = Nought.new
-    @cross = Cross.new
+    @nought = Player.new
+    @cross = Player.new
   end
 
   private

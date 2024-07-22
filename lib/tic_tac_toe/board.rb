@@ -12,10 +12,6 @@ class Board
     ]
   end
 
-  def reset
-    initialize
-  end
-
   def print
     board.each_with_index do |row, index|
       chars = row.map { |i| i.nil? ? ' ' : i }
