@@ -13,10 +13,16 @@ class TicTacToe
     @next_player = cross
   end
 
+  def play_turn
+    board.print
+    coord = input_coord
+    board.mark(next_player.symbol, coord)
+    self.next_player = (next_player == cross ? nought : cross)
+  end
+
   def input_coord
     puts 'Type the coordenates:'
     puts 'Which row? (0/1/2)'
-    row = gets.chomp
 
     puts 'Which column? (0/1/2)'
     column = gets.chomp
@@ -32,4 +38,5 @@ class TicTacToe
   private
 
   attr_reader :board, :nought, :cross
+  attr_writer :next_player
 end
