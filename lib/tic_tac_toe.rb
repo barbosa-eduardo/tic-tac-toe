@@ -25,6 +25,8 @@ class TicTacToe
   end
 
   def print_score
+    puts "Player #{cross.symbol} has #{cross.points} points!"
+    puts "Player #{nought.symbol} has #{nought.points} points!"
   end
 
   private
