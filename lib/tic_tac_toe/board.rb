@@ -36,16 +36,12 @@ class Board
 
   def won?
     (0..2).each do |index|
-      row = board[index]
-      column = [board[0][index], board[1][index], board[2][index]]
-
-      return true if check(row)
-      return true if check(column)
+      # Check row and column
+      return true if check(board[index]) || check([board[0][index], board[1][index], board[2][index]])
     end
 
-    diagonal_1 = [board[0][0], board[1][1], board[2][2]]
-    diagonal_2 = [board[0][2], board[1][1], board[2][0]]
-    check(diagonal_1) || check(diagonal_2)
+    # Check diagonals
+    check([board[0][0], board[1][1], board[2][2]]) || check([board[0][2], board[1][1], board[2][0]])
   end
 
   def full?
