@@ -34,7 +34,7 @@ class Board
     game_won?
   end
 
-  def game_won?
+  def won?
   end
 
   def full?
