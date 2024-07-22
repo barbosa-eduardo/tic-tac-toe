@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'nought'
-require_relative 'cross'
-
 class Board
   attr_reader :winner
 
@@ -16,22 +13,22 @@ class Board
   end
 
   def reset
-    @winner = nil
-    @board = [
-      [nil, nil, nil],
-      [nil, nil, nil],
-      [nil, nil, nil]
-    ]
+    initialize
   end
 
   def print
+    board.each_with_index do |row, index|
+      chars = row.map { |i| i.nil? ? ' ' : i }
+      puts " #{chars[0]} | #{chars[1]} | #{chars[2]} "
+      puts '-----------' unless index == 2
+    end
   end
 
   def mark(symbol, coord)
     return unless available?(coord)
 
     board[coord[0]][coord[1]] = symbol
-    game_won?
+    won?
   end
 
   def won?
