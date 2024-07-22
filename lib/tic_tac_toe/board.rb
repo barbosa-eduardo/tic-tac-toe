@@ -13,11 +13,14 @@ class Board
   end
 
   def print
+    puts '     0   1   2'
+    puts
     board.each_with_index do |row, index|
       chars = row.map { |i| i.nil? ? ' ' : i }
-      puts " #{chars[0]} | #{chars[1]} | #{chars[2]} "
-      puts '-----------' unless index == 2
+      puts "#{index}    #{chars[0]} | #{chars[1]} | #{chars[2]} "
+      puts '    -----------' unless index == 2
     end
+    puts
   end
 
   def mark(symbol, coord)

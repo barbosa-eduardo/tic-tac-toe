@@ -10,6 +10,12 @@ class TicTacToe
     @cross = Player.new
   end
 
+  def start
+    while board.winner.nil?
+
+    end
+  end
+
   private
 
   attr_reader :board, :nought, :cross
