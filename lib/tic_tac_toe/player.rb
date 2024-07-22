@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :points
+  attr_reader :points, :symbol
 
-  def initialize
+  def initialize(symb)
     @points = 0
+    @symbol = symb
   end
 
   def increment_points
@@ -13,5 +14,5 @@ class Player
 
   private
 
-  attr_writer :points
+  attr_writer :points, :symbol
 end
