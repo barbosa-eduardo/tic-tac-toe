@@ -10,4 +10,8 @@ class TicTacToe
     @nought = Nought.new
     @cross = Cross.new
   end
+
+  private
+
+  attr_reader :board, :nought, :cross
 end
