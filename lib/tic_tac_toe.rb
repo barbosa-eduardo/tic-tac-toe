@@ -23,11 +23,12 @@ class TicTacToe
   def input_coord
     puts 'Type the coordenates:'
     puts 'Which row? (0/1/2)'
+    row = gets.chomp until row.length == 1 && row.ord.between?(48, 50)
 
     puts 'Which column? (0/1/2)'
-    column = gets.chomp
+    column = gets.chomp until column.length == 1 && column.ord.between?(48, 50)
 
-    [row, column]
+    [row.to_i, column.to_i]
   end
 
   def print_score
