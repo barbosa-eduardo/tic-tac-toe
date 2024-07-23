@@ -20,8 +20,8 @@ class TicTacToe
     cross.increment_points if board.winner == cross.symbol
     nought.increment_points if board.winner == nought.symbol
     board.print
+    puts board.winner.nil? ? "It's a draw" : "Player #{board.winner} wins the round!"
     print_score
-    puts board.winner.nil? ? "It's a draw" : "Player #{board.winner} wins!"
   end
 
   def print_score
@@ -64,6 +64,3 @@ class TicTacToe
     self.next_player = (next_player == cross ? nought : cross)
   end
 end
-
-game = TicTacToe.new
-game.play_round
