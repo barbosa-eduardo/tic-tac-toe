@@ -16,19 +16,23 @@ class TicTacToe
   def play_round
     self.board = Board.new
     self.next_player = cross
-    play_turn while board.winner.nil? || board.full?
+    play_turn while board.winner.nil? && !board.full?
     board.print
   end
 
   def play_turn
     board.print
-    coord = input_coord
-    board.mark(next_player.symbol, coord)
+    loop do
+      coord = input_coord
+      break if board.mark(next_player.symbol, coord)
+
+      puts "\nInvalid coordinates! Try again."
+    end
     self.next_player = (next_player == cross ? nought : cross)
   end
 
   def input_coord
-    puts 'Type the coordenates:'
+    puts "\nPlayer #{next_player.symbol} type the coordenates:"
     row = String.new
     loop do
       puts 'Which row? (0/1/2)'
@@ -53,9 +57,9 @@ class TicTacToe
 
   private
 
-  attr_reader :board, :nought, :cross
+  attr_accessor :board, :nought, :cross
   attr_writer :next_player
 end
 
 game = TicTacToe.new
-game.play_turn
+game.play_round

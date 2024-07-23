@@ -24,10 +24,11 @@ class Board
   end
 
   def mark(symbol, coord)
-    return unless available?(coord)
+    return false unless available?(coord)
 
     board[coord[0]][coord[1]] = symbol
     won?
+    true
   end
 
   def won?
