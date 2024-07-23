@@ -60,7 +60,9 @@ class Board
   attr_writer :winner
 
   def check(array)
-    return false unless array.length == 3 && array.uniq == 1
+    p array.length
+    p array.uniq
+    return false unless array.compact.length == 3 && array.uniq.length == 1
 
     self.winner = array[0]
     true

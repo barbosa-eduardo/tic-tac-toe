@@ -17,7 +17,11 @@ class TicTacToe
     self.board = Board.new
     self.next_player = cross
     play_turn while board.winner.nil? && !board.full?
+    cross.increment_points if board.winner == cross.symbol
+    nought.increment_points if board.winner == nought.symbol
     board.print
+    print_score
+    puts board.winner.nil? ? "It's a draw" : "Player #{board.winner} wins!"
   end
 
   def play_turn
