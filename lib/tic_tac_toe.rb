@@ -24,16 +24,15 @@ class TicTacToe
     puts board.winner.nil? ? "It's a draw" : "Player #{board.winner} wins!"
   end
 
-  def play_turn
-    board.print
-    loop do
-      coord = input_coord
-      break if board.mark(next_player.symbol, coord)
-
-      puts "\nInvalid coordinates! Try again."
-    end
-    self.next_player = (next_player == cross ? nought : cross)
+  def print_score
+    puts "Player #{cross.symbol} has #{cross.points} points!"
+    puts "Player #{nought.symbol} has #{nought.points} points!"
   end
+
+  private
+
+  attr_accessor :board, :nought, :cross
+  attr_writer :next_player
 
   def input_coord
     puts "\nPlayer #{next_player.symbol} type the coordenates:"
@@ -54,15 +53,16 @@ class TicTacToe
     [row.to_i, column.to_i]
   end
 
-  def print_score
-    puts "Player #{cross.symbol} has #{cross.points} points!"
-    puts "Player #{nought.symbol} has #{nought.points} points!"
+  def play_turn
+    board.print
+    loop do
+      coord = input_coord
+      break if board.mark(next_player.symbol, coord)
+
+      puts "\nInvalid coordinates! Try again."
+    end
+    self.next_player = (next_player == cross ? nought : cross)
   end
-
-  private
-
-  attr_accessor :board, :nought, :cross
-  attr_writer :next_player
 end
 
 game = TicTacToe.new
